@@ -29,7 +29,7 @@ app.use(function (req, res, next) {
 })
 
 app.use('/demoformat',function (req, res, next) {
-  res.send({"status":true,"msg":"empty","data":{"app_version":{"android":{"name":"google","version":"1.0"}}}})
+  res.send({"meta":{"status":true,"message":"empty"},"data":{"app_version":{"android":{"name":"google","version":"1.0"}}}})
   next()
 })
 
