@@ -1,10 +1,13 @@
 const MongoClient = require('mongodb').MongoClient
-var url = "mongodb://localhost:27017/mydb";
+var dbURI = "mongodb://localhost:27017/mydb";
 let _db
+if (process.env.NODE_ENV === 'production') {
+    dbURI = process.env.MONGOLAB_URI;
+}
 
  const connectDB = async (callback) => {
      try {
-         MongoClient.connect(url,{ useNewUrlParser: true }, (err, db) => {
+         MongoClient.connect(dbURI,{ useNewUrlParser: true }, (err, db) => {
                _db = db.db("mydb");
              return callback(err)
          })
