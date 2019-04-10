@@ -28,4 +28,9 @@ app.use(function (req, res, next) {
   next()
 })
 
+app.use('/demoformat',function (req, res, next) {
+  res.send({"status":true,"msg":"empty","data":{"result":{}}})
+  next()
+})
+
 module.exports = app;

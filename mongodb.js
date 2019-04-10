@@ -1,9 +1,7 @@
 const MongoClient = require('mongodb').MongoClient
 var dbURI = "mongodb://localhost:27017/mydb";
 let _db
-if (process.env.NODE_ENV === 'production') {
-    dbURI = process.env.MONGOLAB_URI;
-}
+dbURI = process.env.MONGOLAB_URI;
 
  const connectDB = async (callback) => {
      try {
