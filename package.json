@@ -1,0 +1,16 @@
+{
+    "name": "baseapis",
+    "version": "1.0.0",
+    "description": "provides base apis for base apps",
+    "main": "index.js",
+    "author": {"name": "Ranagnathan S"},
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "express": "^4.16.0",
+        "http-errors": "^1.7.2",
+        "jade": "^1.11.0",
+        "pug": "^2.0.3"
+    }    
+}
