@@ -97,7 +97,7 @@ app.post('/auth/login', async function(req, res) {
     // slowFunction failed to invoke its callback within 5 seconds
     // response has been set to HTTP 202
    // res.write('sorry, this will take longer than expected...');
-   msg = 'orry, this will take longer than expected...';
+   msg = 'sorry, this will take longer than expected...';
     return getOutput(res, 200, loginResContent, status, msg);
   });
 
@@ -116,6 +116,8 @@ app.post('/auth/login', async function(req, res) {
       var hashedPassword = bcrypt.hashSync(password, 8);
       console.log(`body hashedPassword: ${hashedPassword}`);
     }
+
+    
 
   } catch (error) {
     return getOutput(res, 200, loginResContent, status, msg);
