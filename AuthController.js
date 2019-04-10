@@ -76,7 +76,6 @@ app.post('/auth/register', async function(req, res) {
 });
 
 app.post('/auth/login', async function(req, res) {
-  let job = await workQueue.add();
   globalResultParam = "result";
   loginResContent = {};
   msg = 'There was a problem ';
@@ -87,6 +86,22 @@ app.post('/auth/login', async function(req, res) {
 
     console.log(`body email: ${email}`);
     console.log(`body password" ${password}`);
+
+  let job = await workQueue.add();
+  var delayed = new DelayedResponse(req, res);
+  delayed.on('done', function (results) {
+    // slowFunction responded within 5 seconds
+    msg = 'slowFunction responded within 5 seconds!';
+    return getOutput(res, 200, loginResContent, status, msg);
+  }).on('cancel', function () {
+    // slowFunction failed to invoke its callback within 5 seconds
+    // response has been set to HTTP 202
+   // res.write('sorry, this will take longer than expected...');
+   msg = 'orry, this will take longer than expected...';
+    return getOutput(res, 200, loginResContent, status, msg);
+  });
+
+
 
     if (email == null || email == 'undefined') {
       msg = 'email is missing!';
