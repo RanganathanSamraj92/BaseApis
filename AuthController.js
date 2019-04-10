@@ -76,6 +76,7 @@ app.post('/auth/register', async function(req, res) {
 });
 
 app.post('/auth/login', async function(req, res) {
+  let job = await workQueue.add();
   globalResultParam = "result";
   loginResContent = {};
   msg = 'There was a problem ';
