@@ -5,8 +5,11 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 var mongooseApp = require('./mongooseApp.js');
 
-const port = 3000
-var server = app.listen(port, function() {
+const host = '0.0.0.0';
+const port = process.env.PORT || 3000;
+
+
+var server = app.listen(port,host, function() {
      console.log(`Server app is ready and we are on port ${port}!`);
 
      mongooseApp.connectMongooseDB(async (err,mongoose) => {
